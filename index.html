@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#12002b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>เมาแล้วเถียง · Tipsy Duel 🍻</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800;900&family=Noto+Sans+Thai:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"></div>
+<div id="confetti"></div>
+<div id="toast"></div>
+<div id="overlay"></div>
+
+<!-- ================= TITLE ================= -->
+<section class="screen active fadein" id="screen-title">
+  <div class="logo">🍻</div>
+  <h1>เมาแล้วเถียง</h1>
+  <div class="h1-sub">Tipsy Duel</div>
+  <p class="tagline">
+    สองคน มือถือเครื่องเดียว ศักดิ์ศรีไม่มีเหลือ<br>
+    <span class="en">Two players. One phone. Zero dignity.</span>
+  </p>
+
+  <div class="names">
+    <input id="name1" maxlength="12" placeholder="ผู้เล่น 1 · P1" value="ไอ้หนู">
+    <input id="name2" maxlength="12" placeholder="ผู้เล่น 2 · P2" value="ไอ้ตี๋">
+  </div>
+
+  <div class="section-label">โหมด · Mode</div>
+  <div class="pillrow" id="modeRow">
+    <button class="pill active" data-mode="tipsy">
+      <span class="th">🍻 โหมดเมา</span><span class="en">Tipsy</span>
+    </button>
+    <button class="pill" data-mode="sober">
+      <span class="th">🥤 โหมดน้ำเปล่า</span><span class="en">Sober</span>
+    </button>
+  </div>
+
+  <div class="section-label">เนื้อหา · Content</div>
+  <div class="pillrow" id="contentRow">
+    <button class="pill active" data-content="normal">
+      <span class="th">🍭 ปกติ</span><span class="en">Normal</span>
+    </button>
+    <button class="pill" data-content="spicy">
+      <span class="th">🔥 18+</span><span class="en">Spicy</span>
+    </button>
+  </div>
+
+  <div class="section-label">แข่งถึง · Race to</div>
+  <div class="pillrow" id="targetRow">
+    <button class="pill" data-target="3"><span class="th">3 แต้ม</span><span class="en">3 pts</span></button>
+    <button class="pill active" data-target="5"><span class="th">5 แต้ม</span><span class="en">5 pts</span></button>
+    <button class="pill" data-target="7"><span class="th">7 แต้ม</span><span class="en">7 pts</span></button>
+  </div>
+
+  <div class="stack" style="margin-top:14px">
+    <button class="btn primary big" id="btn-start">
+      <span class="th">เริ่มเลยจ้า 🔥</span><span class="en">Start the Chaos</span>
+    </button>
+    <button class="btn ghost" id="btn-rules">
+      <span class="th">วิธีเล่น</span><span class="en">How to Play</span>
+    </button>
+  </div>
+
+  <p class="disclaimer">
+    ⚠️ <b>ดื่มอย่างมีสติ</b> ห้ามบังคับใครดื่มเด็ดขาด · โหมด 18+ ต้องได้รับการยินยอมจากทั้งสองฝ่าย<br>
+    <span class="en"><b>Play safe.</b> Never pressure anyone. 🔥 18+ mode requires <b>consent from both players</b> — you can skip any card by tapping "ไม่ผ่าน / Failed".</span>
+  </p>
+</section>
+
+<!-- ================= RULES ================= -->
+<section class="screen fadein" id="screen-rules">
+  <div class="rules-card">
+    <h2>📜 วิธีเล่น <span class="en-inline">How to Play</span></h2>
+    <ul>
+      <li><b>1.</b> ผลัดกันเล่น ถึงตาคุณกดการ์ดเพื่อจั่ว<span class="en">Take turns. On your turn, tap to draw.</span></li>
+      <li><b>2.</b> ทำตามการ์ด ถ้ามีเวลาจับ รีบทำ<span class="en">Do the card. If timed, go fast.</span></li>
+      <li><b>3.</b> อีกคนเป็น <b>กรรมการ</b> คำตัดสินถือเป็นที่สิ้นสุด<span class="en">Opponent is the <b>judge</b>. Final word.</span></li>
+      <li><b>4.</b> <b>ผ่าน</b> = ได้แต้ม อีกคนกิน · <b>ไม่ผ่าน</b> = คุณกินเอง<span class="en"><b>Pass</b> = score, opponent drinks. <b>Fail</b> = you drink.</span></li>
+      <li><b>5.</b> ใครถึงแต้มเป้าหมายก่อนชนะ 👑<span class="en">First to target score wins. 👑</span></li>
+    </ul>
+  </div>
+  <div class="rules-card">
+    <h2>🎮 มินิเกม <span class="en-inline">Mini-Games (7)</span></h2>
+    <p class="rules-p">
+      <b>เป่ายิ้งฉุบ</b> · <b>กดเร็ว</b> · <b>ทายเลข</b> · <b>ใครไวกว่า</b> · <b>จำให้ได้</b> · <b>วัดใจ</b> · <b>หาตัวแปลก</b><br>
+      <span class="en">RPS · Tap Race · Number Guess · Reaction Duel · Memory · Chicken · Odd One Out</span>
+    </p>
+  </div>
+  <div class="rules-card">
+    <h2>🔥 โหมด 18+ <span class="en-inline">Spicy Mode</span></h2>
+    <p class="rules-p">
+      เพิ่มการ์ด <b>สารภาพ</b> และ <b>กล้า</b> — คำถามส่วนตัว และการกระทำที่ต้องกล้า<br>
+      <span class="en">Adds <b>Confess</b> and <b>Spicy Dare</b> cards — personal questions and bold actions. Both players must consent. Skip any card freely.</span>
+    </p>
+  </div>
+  <div class="stack" style="margin-top:8px">
+    <button class="btn ghost" id="btn-back">
+      <span class="th">← กลับ</span><span class="en">Back</span>
+    </button>
+  </div>
+</section>
+
+<!-- ================= GAME ================= -->
+<section class="screen" id="screen-game">
+  <div class="wob">
+    <div class="topbar">
+      <button class="icon-btn" id="btn-quit">✕</button>
+      <div class="mode-tag" id="modeTag">
+        <span class="th">🍻 โหมดเมา</span><span class="en">Tipsy</span>
+      </div>
+      <button class="icon-btn" id="btn-sound">🔊</button>
+    </div>
+
+    <div class="hud">
+      <div class="player" id="p1">
+        <div class="p-name">ผู้เล่น 1</div>
+        <div class="p-score">0<span>pts</span></div>
+        <div class="p-bar"><div class="p-bar-fill"></div></div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="player" id="p2">
+        <div class="p-name">ผู้เล่น 2</div>
+        <div class="p-score">0<span>pts</span></div>
+        <div class="p-bar"><div class="p-bar-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="turn-banner" id="turnBanner">ตาของผู้เล่น 1</div>
+
+    <div class="stage">
+      <div class="card back" id="card"></div>
+    </div>
+
+    <div class="controls" id="controls"></div>
+  </div>
+</section>
+
+<!-- ================= WINNER ================= -->
+<section class="screen" id="screen-win">
+  <div class="win-crown">👑</div>
+  <div class="win-title">ผู้ชนะ · Champion</div>
+  <div class="win-name" id="winName">ผู้เล่น 1</div>
+  <div class="win-sub" id="winSub">อีกคนก็เก่งนะ แค่แพ้</div>
+  <div class="score-final" id="finalScore">5 — 3</div>
+  <div class="stack">
+    <button class="btn primary big" id="btn-again">
+      <span class="th">แก้มืออีกรอบ 🔁</span><span class="en">Rematch</span>
+    </button>
+    <button class="btn ghost" id="btn-home">
+      <span class="th">กลับหน้าหลัก</span><span class="en">Main Menu</span>
+    </button>
+  </div>
+</section>
+
+<script src="game.js" defer></script>
+</body>
+</html>
